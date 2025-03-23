@@ -215,8 +215,8 @@ if __name__ == "__main__":
     try:
         # 设置环境变量
         os.environ["openweather_api_key"] = "f2860a0db0f7b3c3aab6322d8e04d4e6"
-        # 使用默认传输方式运行，绑定到 0.0.0.0 以接受外部连接
-        mcp.run(host="0.0.0.0")
+        # 使用默认传输方式运行
+        mcp.run()
     except Exception as e:
         print(f"启动失败: {e}")
 
