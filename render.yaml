@@ -3,7 +3,7 @@ services:
     name: mcp-server
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python weather.py
+    startCommand: python weather-sse.py
     envVars:
       - key: openweather_api_key
         value: f2860a0db0f7b3c3aab6322d8e04d4e6
