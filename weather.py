@@ -217,8 +217,24 @@ if __name__ == "__main__":
         os.environ["openweather_api_key"] = "f2860a0db0f7b3c3aab6322d8e04d4e6"
         # 获取 PORT 环境变量，默认为 10000
         port = int(os.environ.get("PORT", 10000))
-        # 使用默认传输方式运行，指定主机和端口
-        mcp.run(transport="sse", host="0.0.0.0", port=port)
+        # 使用默认传输方式运行
+        # 注意：FastMCP.run() 不接受 host 和 port 参数
+        # 我们需要在创建 FastMCP 实例时设置这些参数
+        # 或者使用其他方法来绑定端口
+        
+        # 尝试使用 Flask 或其他 Web 框架来绑定端口
+        from flask import Flask
+        app = Flask(__name__)
+        
+        @app.route('/')
+        def home():
+            return "MCP 天气服务器正在运行"
+        
+        # 启动 MCP 服务器（不指定端口）
+        mcp.run(transport="sse")
+        
+        # 启动 Flask 服务器（指定端口）
+        app.run(host="0.0.0.0", port=port)
     except Exception as e:
         print(f"启动失败: {e}")
 
