@@ -215,8 +215,10 @@ if __name__ == "__main__":
     try:
         # 设置环境变量
         os.environ["openweather_api_key"] = "f2860a0db0f7b3c3aab6322d8e04d4e6"
-        # 使用默认传输方式运行
-        mcp.run()
+        # 获取 PORT 环境变量，默认为 10000
+        port = int(os.environ.get("PORT", 10000))
+        # 使用默认传输方式运行，指定主机和端口
+        mcp.run(transport="sse", host="0.0.0.0", port=port)
     except Exception as e:
         print(f"启动失败: {e}")
 
