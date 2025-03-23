@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mcp-server
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python weather.py
+    envVars:
+      - key: openweather_api_key
+        value: f2860a0db0f7b3c3aab6322d8e04d4e6
+    # 确保服务可以接收外部连接
+    plan: free
+    # 自动扩展设置
+    autoscaling:
+      min: 1
+      max: 1
